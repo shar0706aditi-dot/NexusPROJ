@@ -1,5 +1,6 @@
 import os 
 import asyncio
+import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
@@ -99,7 +100,33 @@ async def reflect(request: ReflectionRequest):
         media_type="text/event-stream"
     )
 
+@app.get("/test-api")
+async def test_api():
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type": "application/json"
+            },
+            json={
+                "model": "deepseek/deepseek-chat-v3-0324",
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": "Hello"
+                    }
+                ]
+            }
+        )
 
+    return response.json()
+
+
+@app.get("/health")
+async def health():
+    """Health check endpoint."""
+    return {"status": "ok"}
 @app.get("/health")
 async def health():
     """Health check endpoint."""
