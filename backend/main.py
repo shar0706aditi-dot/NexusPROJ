@@ -24,6 +24,8 @@ load_dotenv()
 # Read OpenRouter API key from environment variable
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 print("API KEY EXISTS:", bool(OPENROUTER_API_KEY))
+print("KEY START:", OPENROUTER_API_KEY[:10])
+print("KEY LENGTH:", len(OPENROUTER_API_KEY))
 if not OPENROUTER_API_KEY:
     raise ValueError("OPENROUTER_API_KEY environment variable is not set")
 
