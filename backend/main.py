@@ -112,14 +112,15 @@ async def test_api():
                 "Content-Type": "application/json"
             },
             json={
-                "model": "deepseek/deepseek-chat-v3-0324",
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": "Hello"
-                    }
-                ]
-            }
+    "model": "deepseek/deepseek-chat-v3-0324",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Hello"
+        }
+    ],
+    "max_tokens": 100
+}
         )
 
     return response.json()
@@ -129,7 +130,4 @@ async def test_api():
 async def health():
     """Health check endpoint."""
     return {"status": "ok"}
-@app.get("/health")
-async def health():
-    """Health check endpoint."""
-    return {"status": "ok"}
+
