@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7f4" />
+    <title>NEXUS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-theme="light">
+    <div class="app-shell">
+      <header class="top-bar">
+        <button class="settings-button" aria-label="Settings" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
+
+        <button class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">
+          <div class="theme-toggle__track">
+            <span class="theme-toggle__knob">
+              <svg viewBox="0 0 24 24" class="theme-toggle__svg">
+                <circle class="theme-toggle__sun" cx="12" cy="12" r="4.2"></circle>
+                <g class="theme-toggle__rays">
+                  <path d="M12 2.7v2.4"></path>
+                  <path d="M12 18.9v2.4"></path>
+                  <path d="M2.7 12h2.4"></path>
+                  <path d="M18.9 12h2.4"></path>
+                  <path d="M5.4 5.4l1.7 1.7"></path>
+                  <path d="M16.9 16.9l1.7 1.7"></path>
+                  <path d="M5.4 18.6l1.7-1.7"></path>
+                  <path d="M16.9 7.1l1.7-1.7"></path>
+                </g>
+                <path class="theme-toggle__moon" d="M14.7 4.7a7.2 7.2 0 1 0 4.6 12.6 7.2 7.2 0 0 1-4.6-12.6Z"></path>
+              </svg>
+            </span>
+          </div>
+        </button>
+      </header>
+
+      <main class="hero">
+        <div class="hero__content">
+          <h1 class="hero__title">NEXUS</h1>
+          <p class="hero__tagline">Perspective over answers.</p>
+          <p class="hero__support">Reflection, not advice.</p>
+
+          <label class="composer" for="reflection">
+            <textarea id="reflection" placeholder="What's on your mind today?"></textarea>
+          </label>
+
+          <button class="primary-button" type="button">
+            <span>Reflect</span>
+            <span class="button-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <!-- Centered Glass Modal -->
+    <div class="modal-overlay" id="settings-modal">
+      <div class="glass-modal">
+        <button class="modal-close" aria-label="Close settings">&times;</button>
+        <h2 class="modal-title">Settings</h2>
+        
+        <div class="modal-section">
+          <label class="modal-label">Reflection Depth</label>
+          <div class="depth-options">
+            <button class="depth-btn" data-depth="gentle" type="button">Gentle</button>
+            <button class="depth-btn" data-depth="balanced" type="button">Balanced</button>
+            <button class="depth-btn" data-depth="deep" type="button">Deep</button>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <label class="modal-label">Theme Mode</label>
+          <div class="theme-options">
+            <button class="theme-btn" data-theme-opt="light" type="button">Light</button>
+            <button class="theme-btn" data-theme-opt="dark" type="button">Dark</button>
+            <button class="theme-btn" data-theme-opt="system" type="button">System</button>
+          </div>
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <div class="info-section">
+          <div class="info-item">
+            <span>About Nexus</span>
+            <span class="info-val">An AI companion designed for intellectual mirror, challenge, and deep perspective reflections.</span>
+          </div>
+          <div class="info-item">
+            <span>Privacy</span>
+            <span class="info-val">Your inputs remain locally stored in your current session. No conversational logs are persisted.</span>
+          </div>
+          <div class="info-item">
+            <span>Version</span>
+            <span class="info-val">2.1.0 (Premium)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
