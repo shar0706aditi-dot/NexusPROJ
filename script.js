@@ -416,9 +416,7 @@ async function streamReflection(prompt) {
   let accumulatedText = '';
 
   try {
-    const apiTarget = window.location.origin.includes('localhost:8000') || window.location.origin.includes('127.0.0.1:8000')
-      ? '/reflect'
-      : 'http://localhost:8000/reflect';
+    const apiTarget = "https://nexusproj.onrender.com/reflect";
 
     const response = await fetch(apiTarget, {
       method: 'POST',
