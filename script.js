@@ -188,7 +188,11 @@ restoreSession();
 
 function logout(show = true) {
   state.token = null; state.user = null;
+  state.lastReflection = null;
   localStorage.removeItem("nexus-token");
+  $("#reflectionInput").value = "";
+  $("#characterCount").textContent = "0 / 10000";
+  $("#responseArea").innerHTML = "";
   updateAuthUI();
   closeModal("settingsModal");
   goHome();
