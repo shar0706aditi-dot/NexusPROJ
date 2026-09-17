@@ -1,7 +1,8 @@
+ // TODO: set this to your real deployed backend URL
 const API = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "http://127.0.0.1:8000"
-  : "https://your-production-api.example.com"; // TODO: set this to your real deployed backend URL
-const SECTIONS = ["Possible Bias", "Potential Contradiction", "Hidden Assumption", "Alternative Perspective", "Reflection Prompt", "Blind Spot", "Reframe"];
+  : "https://nexusproj-1.onrender.com";
+ const SECTIONS = ["Possible Bias", "Potential Contradiction", "Hidden Assumption", "Alternative Perspective", "Reflection Prompt", "Blind Spot", "Reframe"];
 
 const state = {
   token: localStorage.getItem("nexus-token"),
