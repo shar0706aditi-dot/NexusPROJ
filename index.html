@@ -1,101 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f7f4" />
-    <title>NEXUS</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body data-theme="light">
-    <div class="app-shell">
-      <header class="top-bar">
-        <button class="settings-button" aria-label="Settings" type="button">
-          <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
 
-        <button class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">
-          <div class="theme-toggle__track">
-            <span class="theme-toggle__knob">
-              <svg viewBox="0 0 24 24" class="theme-toggle__svg">
-                <circle class="theme-toggle__sun" cx="12" cy="12" r="4.2"></circle>
-                <g class="theme-toggle__rays">
-                  <path d="M12 2.7v2.4"></path>
-                  <path d="M12 18.9v2.4"></path>
-                  <path d="M2.7 12h2.4"></path>
-                  <path d="M18.9 12h2.4"></path>
-                  <path d="M5.4 5.4l1.7 1.7"></path>
-                  <path d="M16.9 16.9l1.7 1.7"></path>
-                  <path d="M5.4 18.6l1.7-1.7"></path>
-                  <path d="M16.9 7.1l1.7-1.7"></path>
-                </g>
-                <path class="theme-toggle__moon" d="M14.7 4.7a7.2 7.2 0 1 0 4.6 12.6 7.2 7.2 0 0 1-4.6-12.6Z"></path>
-              </svg>
-            </span>
-          </div>
-        </button>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NEXUS — an AI reflection engine that helps you see your thoughts from multiple perspectives.">
+  <title>NEXUS — Think Beyond the First Answer</title>
 
-      <main class="hero">
-        <div class="hero__content">
-          <h1 class="hero__title">NEXUS</h1>
-          <p class="hero__tagline">Perspective over answers.</p>
-          <p class="hero__support">Reflection, not advice.</p>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
-          <label class="composer" for="reflection">
-            <textarea id="reflection" placeholder="What's on your mind today?"></textarea>
-          </label>
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-          <button class="primary-button" type="button">
-            <span>Reflect</span>
-            <span class="button-arrow" aria-hidden="true">→</span>
-          </button>
+<body>
+
+  <!-- =====================================================
+       LANDING PAGE
+  ====================================================== -->
+  <div id="landingPage">
+
+    <header class="landing-nav">
+      <button class="landing-logo" id="landingLogo">NEXUS</button>
+
+      <nav class="landing-links">
+        <a href="#about">About</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#perspectives">Perspectives</a>
+      </nav>
+
+      <div class="landing-nav-actions">
+        <button class="nav-login" id="landingLoginBtn">Log in</button>
+        <button class="nav-start" id="landingStartBtn">Start reflecting <span>↗</span></button>
+      </div>
+    </header>
+
+    <!-- MULTI-SCREEN PARALLAX HERO -->
+    <section class="nexus-parallax-hero" id="home">
+      <div class="parallax-bg">
+        <div class="parallax-orb orb-purple"></div>
+        <div class="parallax-orb orb-blue"></div>
+        <div class="parallax-orb orb-pink"></div>
+      </div>
+
+      <nav class="parallax-nav">
+        <button class="parallax-logo">NEXUS</button>
+        <div class="parallax-screen-nav">
+          <button class="screen-btn active" data-screen="0">First screen</button>
+          <button class="screen-btn" data-screen="1">Second screen</button>
+          <button class="screen-btn" data-screen="2">Third screen</button>
+          <button class="screen-btn" data-screen="3">Fourth screen</button>
         </div>
-      </main>
-    </div>
+        <button class="parallax-start" id="parallaxStartBtn">Start reflecting <span>↗</span></button>
+      </nav>
 
-    <!-- Centered Glass Modal -->
-    <div class="modal-overlay" id="settings-modal">
-      <div class="glass-modal">
-        <button class="modal-close" aria-label="Close settings">&times;</button>
-        <h2 class="modal-title">Settings</h2>
-        
-        <div class="modal-section">
-          <label class="modal-label">Reflection Depth</label>
-          <div class="depth-options">
-            <button class="depth-btn" data-depth="gentle" type="button">Gentle</button>
-            <button class="depth-btn" data-depth="balanced" type="button">Balanced</button>
-            <button class="depth-btn" data-depth="deep" type="button">Deep</button>
-          </div>
-        </div>
+      <div class="parallax-stage">
 
-        <div class="modal-section">
-          <label class="modal-label">Theme Mode</label>
-          <div class="theme-options">
-            <button class="theme-btn" data-theme-opt="light" type="button">Light</button>
-            <button class="theme-btn" data-theme-opt="dark" type="button">Dark</button>
-            <button class="theme-btn" data-theme-opt="system" type="button">System</button>
+        <article class="parallax-screen active">
+          <div class="screen-number">01 / 04</div>
+          <div class="screen-copy">
+            <span class="screen-eyebrow">AI REFLECTION ENGINE</span>
+            <h1>Think beyond <em>the first answer.</em></h1>
+            <p>NEXUS helps you examine a thought from multiple perspectives — without deciding for you.</p>
+            <button class="screen-cta" id="screenCta0">Begin with a thought <span>↓</span></button>
           </div>
-        </div>
+          <div class="screen-visual visual-one">
+            <div class="visual-ring ring-one"></div>
+            <div class="visual-ring ring-two"></div>
+            <div class="floating-word word-one">THINK</div>
+            <div class="floating-word word-two">QUESTION</div>
+            <div class="floating-word word-three">REFLECT</div>
+          </div>
+        </article>
 
-        <div class="modal-divider"></div>
+        <article class="parallax-screen">
+          <div class="screen-number">02 / 04</div>
+          <div class="screen-copy">
+            <span class="screen-eyebrow">LOOK AGAIN</span>
+            <h1>One thought. <em>More than one lens.</em></h1>
+            <p>What feels obvious at first may look completely different from another angle.</p>
+            <button class="screen-cta" data-scroll-to="#perspectives">Explore perspectives <span>→</span></button>
+          </div>
+          <div class="screen-visual visual-two">
+            <div class="perspective-circle circle-one"><span>BIAS</span></div>
+            <div class="perspective-circle circle-two"><span>ASSUMPTION</span></div>
+            <div class="perspective-circle circle-three"><span>BLIND SPOT</span></div>
+            <div class="perspective-core">YOUR<br>THOUGHT</div>
+          </div>
+        </article>
 
-        <div class="info-section">
-          <div class="info-item">
-            <span>About Nexus</span>
-            <span class="info-val">An AI companion designed for intellectual mirror, challenge, and deep perspective reflections.</span>
+        <article class="parallax-screen">
+          <div class="screen-number">03 / 04</div>
+          <div class="screen-copy">
+            <span class="screen-eyebrow">SEVEN PERSPECTIVES</span>
+            <h1>Find what <em>you might be missing.</em></h1>
+            <p>NEXUS explores the hidden forces shaping the way you see a situation.</p>
+            <button class="screen-cta" data-scroll-to="#perspectives">See the framework <span>→</span></button>
           </div>
-          <div class="info-item">
-            <span>Privacy</span>
-            <span class="info-val">Your inputs remain locally stored in your current session. No conversational logs are persisted.</span>
+          <div class="screen-visual visual-three">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit orbit-three"></div>
+            <div class="orbit-label label-a">POSSIBLE BIAS</div>
+            <div class="orbit-label label-b">HIDDEN ASSUMPTION</div>
+            <div class="orbit-label label-c">ALTERNATIVE</div>
+            <div class="orbit-label label-d">BLIND SPOT</div>
+            <div class="orbit-center">NEXUS</div>
           </div>
-          <div class="info-item">
-            <span>Version</span>
-            <span class="info-val">2.1.0 (Premium)</span>
+        </article>
+
+        <article class="parallax-screen">
+          <div class="screen-number">04 / 04</div>
+          <div class="screen-copy">
+            <span class="screen-eyebrow">YOUR REFLECTION</span>
+            <h1>Don't just <em>find an answer.</em></h1>
+            <p>Understand the thought behind it, save your reflection, and return whenever you want.</p>
+            <button class="screen-cta screen-final-cta" id="enterNexusBtn">Enter NEXUS <span>↗</span></button>
           </div>
+          <div class="screen-visual visual-four">
+            <div class="reflection-card card-back"><span>REFRAME</span><p>What else could this mean?</p></div>
+            <div class="reflection-card card-middle"><span>BLIND SPOT</span><p>What might you be overlooking?</p></div>
+            <div class="reflection-card card-front"><span>REFLECTION</span><p>A different way to see the same thought.</p></div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="parallax-scroll">
+        <span>SCROLL TO EXPLORE</span>
+        <div class="scroll-progress"><span></span></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="landing-section about-section" id="about">
+      <div class="section-label">01 — THE PURPOSE</div>
+      <div class="section-content">
+        <h2>Sometimes the problem isn't the thought. <em>It's the way we're seeing it.</em></h2>
+        <div class="section-text">
+          <p>We often make decisions from the first explanation that feels right.</p>
+          <p>NEXUS creates space between <strong>what you think</strong> and <strong>how you see it.</strong></p>
+          <p>Instead of giving you an answer, it gives your thought somewhere to go.</p>
         </div>
       </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="landing-section why-section" id="why">
+      <div class="section-label">02 — WHY NEXUS</div>
+      <div class="why-grid">
+        <div class="why-intro"><h2>Your first thought <em>isn't always the whole story.</em></h2></div>
+        <div class="why-cards">
+          <article class="why-card"><span>01</span><h3>We jump to conclusions.</h3><p>A single interpretation can quickly become "the truth."</p></article>
+          <article class="why-card"><span>02</span><h3>We miss our assumptions.</h3><p>Some of the strongest beliefs are the ones we never question.</p></article>
+          <article class="why-card"><span>03</span><h3>We rarely pause to reframe.</h3><p>Looking again can reveal possibilities we couldn't see before.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="landing-section process-section" id="how-it-works">
+      <div class="section-label">03 — HOW IT WORKS</div>
+      <div class="process-heading">
+        <h2>From thought <em>to perspective.</em></h2>
+        <p>No complicated setup. Just write, reflect, and look again.</p>
+      </div>
+
+      <div class="process-steps">
+        <article class="process-step">
+          <div class="step-top"><span class="step-number">01</span><span class="step-icon">✎</span></div>
+          <div class="step-content"><h3>Write your thought</h3><p>Type whatever is on your mind — a decision, a worry, a situation you can't quite place.</p></div>
+        </article>
+        <article class="process-step">
+          <div class="step-top"><span class="step-number">02</span><span class="step-icon">◐</span></div>
+          <div class="step-content"><h3>Choose a depth</h3><p>Gentle, Balanced, or Deep — how far you want NEXUS to dig.</p></div>
+        </article>
+        <article class="process-step">
+          <div class="step-top"><span class="step-number">03</span><span class="step-icon">✺</span></div>
+          <div class="step-content"><h3>See it from more angles</h3><p>NEXUS surfaces bias, assumption, contradiction, and more — without telling you what to think.</p></div>
+        </article>
+        <article class="process-step">
+          <div class="step-top"><span class="step-number">04</span><span class="step-icon">↺</span></div>
+          <div class="step-content"><h3>Save and revisit</h3><p>Build a history of reflections and notice how your thinking changes over time.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 7 PERSPECTIVES -->
+    <section class="landing-section perspective-section" id="perspectives">
+      <div class="section-label">04 — THE NEXUS FRAMEWORK</div>
+      <div class="perspective-heading">
+        <h2>One thought. <em>Seven ways to see it.</em></h2>
+        <p>NEXUS doesn't force one interpretation. It opens several doors.</p>
+      </div>
+
+      <div class="perspective-orbit">
+        <article class="perspective-card card-purple"><span>01</span><h3>Possible Bias</h3><p>What might be influencing the way you're seeing this?</p></article>
+        <article class="perspective-card card-blue"><span>02</span><h3>Hidden Assumption</h3><p>What are you accepting as true without questioning it?</p></article>
+        <article class="perspective-card card-pink"><span>03</span><h3>Contradiction</h3><p>Is there something in your thinking that doesn't quite align?</p></article>
+        <article class="perspective-card card-cyan"><span>04</span><h3>Alternative Perspective</h3><p>How might someone else see the same situation?</p></article>
+        <article class="perspective-card card-orange"><span>05</span><h3>Blind Spot</h3><p>What might you be overlooking?</p></article>
+        <article class="perspective-card card-violet"><span>06</span><h3>Reframe</h3><p>What changes when you look at the thought differently?</p></article>
+        <article class="perspective-card card-green"><span>07</span><h3>Reflection Prompt</h3><p>What question could help you think about this more deeply?</p></article>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+      <div class="cta-glow"></div>
+      <div class="cta-content">
+        <div class="hero-eyebrow">YOUR NEXT THOUGHT</div>
+        <h2>Ready to <em>look again?</em></h2>
+        <p>Your thought doesn't need an immediate answer. Sometimes it just needs another perspective.</p>
+        <button class="hero-primary cta-button" id="finalStartBtn">Start reflecting <span>↗</span></button>
+      </div>
+    </section>
+
+    <footer class="landing-footer">
+      <div class="footer-brand">NEXUS</div>
+      <p>Think deeper. See differently.</p>
+      <span>© 2026 NEXUS</span>
+    </footer>
+
+  </div>
+
+  <!-- =====================================================
+       REFLECTION APP
+  ====================================================== -->
+  <div id="reflectionApp" class="reflection-app hidden">
+
+    <header class="app-nav">
+      <button class="app-logo" id="appHomeBtn">NEXUS</button>
+      <nav>
+        <button class="app-nav-btn active" data-view="reflect">Reflect</button>
+        <button class="app-nav-btn" data-view="history">My Reflections</button>
+        <button class="app-nav-btn" data-view="insights">Insights</button>
+      </nav>
+      <div class="app-actions">
+        <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">◐</button>
+        <button id="settingsBtn" class="icon-btn" aria-label="Settings">⚙</button>
+        <button id="authBtn" class="auth-btn">Log in</button>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- REFLECT -->
+      <section class="app-view active" id="reflectView">
+        <div class="reflection-header">
+          <div class="section-label">YOUR REFLECTION</div>
+          <h1>What's on your mind?</h1>
+          <p>Write freely. NEXUS will help you look at it from another angle.</p>
+        </div>
+
+        <div class="reflection-composer">
+          <div class="composer-top">
+            <span>YOUR THOUGHT</span>
+            <span id="characterCount">0 / 10000</span>
+          </div>
+
+          <textarea id="reflectionInput" maxlength="10000" placeholder="I'm thinking about..."></textarea>
+
+          <div class="reflection-meta">
+            <div class="meta-field">
+              <label for="reflectionDate">Date</label>
+              <input type="date" id="reflectionDate">
+            </div>
+            <div class="meta-field">
+              <label for="reflectionTime">Time</label>
+              <input type="time" id="reflectionTime">
+            </div>
+            <div class="meta-field depth-field">
+              <label>Depth</label>
+              <div class="depth-switch" id="depthSwitch">
+                <button data-depth="gentle">Gentle</button>
+                <button data-depth="balanced" class="active">Balanced</button>
+                <button data-depth="deep">Deep</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="composer-submit">
+            <span>Your reflection will be saved to your history.</span>
+            <button class="hero-primary" id="reflectBtn">Reflect <span>↗</span></button>
+          </div>
+        </div>
+
+        <div id="responseArea" aria-live="polite"></div>
+      </section>
+
+      <!-- HISTORY -->
+      <section class="app-view" id="historyView">
+        <div class="reflection-header">
+          <div class="section-label">YOUR JOURNEY</div>
+          <h1>My Reflections</h1>
+          <p>Revisit what you were thinking and how you saw it.</p>
+        </div>
+        <div id="historyList" class="history-grid"></div>
+      </section>
+
+      <!-- INSIGHTS -->
+  <section class="app-view" id="insightsView">
+    <div class="reflection-header insights-intro">
+      <div class="section-label">YOUR PATTERNS</div>
+      <h1>Insights</h1>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+  <div id="insightsArea"></div>
+</section>
+
+    </main>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="modal">
+    <div class="modal-panel">
+      <button class="modal-close" data-close="authModal">×</button>
+      <div class="section-label">NEXUS ACCOUNT</div>
+      <h2 id="authTitle">Welcome back.</h2>
+      <p id="authSubtitle">Continue your reflection journey.</p>
+
+      <form id="authForm">
+        <div id="nameField" class="form-field hidden">
+          <label>Name<input id="authName" type="text" autocomplete="name"></label>
+        </div>
+        <div class="form-field">
+          <label>Email<input id="authEmail" type="email" required autocomplete="email"></label>
+        </div>
+        <div class="form-field">
+          <label>Password<input id="authPassword" type="password" required autocomplete="current-password"></label>
+        </div>
+        <button type="submit" class="hero-primary full">
+          <span id="authSubmitText">Log in</span><span>↗</span>
+        </button>
+      </form>
+
+      <button id="authModeToggle" class="text-btn">Create an account</button>
+      <div id="authError" class="form-error"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-panel">
+      <button class="modal-close" data-close="settingsModal">×</button>
+      <div class="section-label">PREFERENCES</div>
+      <h2>Settings</h2>
+
+      <div class="settings-section">
+        <label>Default reflection depth</label>
+        <div class="segmented" id="settingsDepth">
+          <button data-depth="gentle">Gentle</button>
+          <button data-depth="balanced" class="active">Balanced</button>
+          <button data-depth="deep">Deep</button>
+        </div>
+      </div>
+
+      <button id="saveSettings" class="hero-primary full">Save preferences</button>
+      <button id="logoutBtn" class="danger-btn full">Log out</button>
+    </div>
+  </div>
+
+  <!-- REFLECTION DETAIL MODAL -->
+  <div id="reflectionModal" class="modal">
+    <div class="modal-panel modal-panel-wide">
+      <button class="modal-close" data-close="reflectionModal">×</button>
+      <div class="section-label" id="savedReflectionMeta">SAVED REFLECTION</div>
+      <h2 id="savedReflectionTitle"></h2>
+      <div id="savedReflectionContent"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+  <script src="script.js?v=2"></script>
+</body>
 </html>
