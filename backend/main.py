@@ -28,6 +28,7 @@ from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, EmailStr, Field
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
 load_dotenv()
 
@@ -45,6 +46,7 @@ CORS_ORIGINS = [o.strip() for o in os.getenv("CORS_ORIGINS", "*").split(",") if 
 DB_PATH = Path(__file__).parent / "nexus.db"
 JWT_ALGO = "HS256"
 TOKEN_TTL_DAYS = 30
+bearer_scheme = HTTPBearer(auto_error=False)
 
 # The 7 reflection dimensions from the synopsis, and which ones are
 # generated at each depth level. Deeper = more dimensions explored.
@@ -153,10 +155,12 @@ def create_token(user_id: int) -> str:
     return jwt.encode(payload, SECRET_KEY, algorithm=JWT_ALGO)
 
 
-def get_current_user(authorization: str = Header(default="")) -> sqlite3.Row:
-    if not authorization.startswith("Bearer "):
+def get_current_user(
+    credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme),
+) -> sqlite3.Row:
+    if credentials is None:
         raise HTTPException(status_code=401, detail="Not authenticated")
-    token = authorization.removeprefix("Bearer ").strip()
+    token = credentials.credentials
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[JWT_ALGO])
     except jwt.PyJWTError:
